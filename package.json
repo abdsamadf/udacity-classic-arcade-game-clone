@@ -1,0 +1,27 @@
+{
+  "name": "classic-arcade-game",
+  "version": "1.0.0",
+  "description": "## Table of Contents",
+  "main": "index.js",
+  "scripts": {
+  "build": "babel js/app.js -d build/js/",
+  "watch": "babel js/app.js -w -d build/js/",
+  "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Samad",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/polyfill": "^7.4.4"
+  },
+  "bugs": {
+    "url": ""
+  },
+  "homepage": ""
+}
