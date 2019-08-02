@@ -6,6 +6,8 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+var canvasWidth = 505;
+var canvasHeight = 606;
 var xMovement = 101;
 var yMovement = 83; // Enemies our player must avoid
 
@@ -76,13 +78,29 @@ function () {
     key: "handleInput",
     value: function handleInput(allowedKeys) {
       // player movement
-      if (allowedKeys == 'up') {
+      this.handlePlayerMovement(allowedKeys);
+    }
+    /**
+     * Player movement and handel player cannot move off the screen
+     * @param  {e} allowedKeys
+     */
+
+  }, {
+    key: "handlePlayerMovement",
+    value: function handlePlayerMovement(allowedKeys) {
+      if (allowedKeys == 'up' && this.y - yMovement >= 0) {
         this.y -= yMovement;
-      } else if (allowedKeys == 'left') {
+      }
+
+      if (allowedKeys == 'left' && this.x - xMovement >= 0) {
         this.x -= xMovement;
-      } else if (allowedKeys == 'right') {
+      }
+
+      if (allowedKeys == 'right' && this.x + xMovement < canvasWidth) {
         this.x += xMovement;
-      } else if (allowedKeys == 'down') {
+      }
+
+      if (allowedKeys == 'down' && this.y + 3 * yMovement <= canvasHeight) {
         this.y += yMovement;
       }
     }

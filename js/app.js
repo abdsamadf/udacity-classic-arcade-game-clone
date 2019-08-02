@@ -1,3 +1,5 @@
+const canvasWidth = 505;
+const canvasHeight = 606;
 const xMovement = 101;
 const yMovement = 83;
 
@@ -56,16 +58,24 @@ class Player {
 
     handleInput(allowedKeys) {
         // player movement
-        if (allowedKeys == 'up') {
+        this.handlePlayerMovement(allowedKeys);
+    }
+
+    /**
+     * Player movement and handel player cannot move off the screen
+     * @param  {e} allowedKeys
+     */
+    handlePlayerMovement(allowedKeys) {
+        if (allowedKeys == 'up' && this.y - yMovement >= 0) {
             this.y -= yMovement;
         }
-        else if (allowedKeys == 'left') {
+        if (allowedKeys == 'left' && this.x - xMovement >= 0) {
             this.x -= xMovement;
         }
-        else if (allowedKeys == 'right') {
+        if (allowedKeys == 'right' && this.x + xMovement < canvasWidth) {
             this.x += xMovement;
         }
-        else if (allowedKeys == 'down') {
+        if (allowedKeys == 'down' && this.y + 3 * yMovement <= canvasHeight) {
             this.y += yMovement;
         }
     }
