@@ -62,10 +62,11 @@ function () {
 
   _createClass(Player, [{
     key: "update",
-    value: function update() {// You should multiply any movement by the dt parameter
-      // which will ensure the game runs at the same speed for
-      // all computers.
-    }
+    value: function update() {} // You should multiply any movement by the dt parameter
+    // which will ensure the game runs at the same speed for
+    // all computers.
+    // Draw the player on the screen, required method for game
+
   }, {
     key: "render",
     value: function render() {
@@ -73,7 +74,18 @@ function () {
     }
   }, {
     key: "handleInput",
-    value: function handleInput(allowedKeys) {}
+    value: function handleInput(allowedKeys) {
+      // player movement
+      if (allowedKeys == 'up') {
+        this.y -= yMovement;
+      } else if (allowedKeys == 'left') {
+        this.x -= xMovement;
+      } else if (allowedKeys == 'right') {
+        this.x += xMovement;
+      } else if (allowedKeys == 'down') {
+        this.y += yMovement;
+      }
+    }
   }]);
 
   return Player;

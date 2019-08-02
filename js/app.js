@@ -49,12 +49,25 @@ class Player {
         // all computers.
     }
 
+    // Draw the player on the screen, required method for game
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
 
     handleInput(allowedKeys) {
-        
+        // player movement
+        if (allowedKeys == 'up') {
+            this.y -= yMovement;
+        }
+        else if (allowedKeys == 'left') {
+            this.x -= xMovement;
+        }
+        else if (allowedKeys == 'right') {
+            this.x += xMovement;
+        }
+        else if (allowedKeys == 'down') {
+            this.y += yMovement;
+        }
     }
 }
 
