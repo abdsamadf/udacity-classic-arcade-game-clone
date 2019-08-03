@@ -10,7 +10,7 @@ var canvasWidth = 505;
 var canvasHeight = 606;
 var xMovement = 101;
 var yMovement = 83;
-var moveFactor = 25; // for enemies more accurate position
+var moveFactor = 20; // for enemies more accurate position
 // Enemies our player must avoid
 
 var Enemy =
@@ -27,6 +27,8 @@ function () {
     this.x = x * xMovement;
     this.y = y * yMovement - moveFactor;
     this.speed = speed;
+    this.width = 90;
+    this.height = 70;
   } // Update the enemy's position, required method for game
   // Parameter: dt, a time delta between ticks
 
@@ -50,6 +52,14 @@ function () {
     key: "render",
     value: function render() {
       ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    } // check for another object is collide with enemy
+    // uses the bounding box algorithm
+    // found from mdn 2d collision detection https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
+
+  }, {
+    key: "collides",
+    value: function collides(obj2) {
+      if (this.x < obj2.x + obj2.width && this.x + this.width > obj2.x && this.y < obj2.y + obj2.height && this.y + this.height > obj2.y) return true;
     }
   }]);
 
@@ -67,7 +77,9 @@ function () {
 
     this.sprite = "images/char-boy.png";
     this.x = 2 * xMovement;
-    this.y = 5 * yMovement;
+    this.y = 5 * yMovement - moveFactor;
+    this.width = 60;
+    this.height = 80;
   } // Update the player position
   // Parameter: dt, a time delta between ticks
 
@@ -98,7 +110,7 @@ function () {
   }, {
     key: "handlePlayerMovement",
     value: function handlePlayerMovement(allowedKeys) {
-      if (allowedKeys == 'up' && this.y - yMovement >= 0) {
+      if (allowedKeys == 'up' && this.y - yMovement + moveFactor >= 0) {
         this.y -= yMovement;
       }
 
@@ -113,6 +125,13 @@ function () {
       if (allowedKeys == 'down' && this.y + 3 * yMovement <= canvasHeight) {
         this.y += yMovement;
       }
+    } // reset the player position
+
+  }, {
+    key: "reset",
+    value: function reset() {
+      this.x = 2 * xMovement;
+      this.y = 5 * yMovement - moveFactor;
     }
   }]);
 
@@ -135,8 +154,20 @@ var enemy4 = new Enemy(3, 3, 1);
 var enemy5 = new Enemy(-3, 3, 3);
 var enemy6 = new Enemy(-2, 3, 5);
 var allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6];
-var player = new Player(); // This listens for key presses and sends the keys to your
+var player = new Player();
+/**
+ * collision detection when player collide with enemy
+ */
+
+function checkCollisions() {
+  allEnemies.forEach(function (enemy) {
+    if (enemy.collides(player)) {
+      player.reset();
+    }
+  });
+} // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
+
 
 document.addEventListener('keyup', function (e) {
   var allowedKeys = {

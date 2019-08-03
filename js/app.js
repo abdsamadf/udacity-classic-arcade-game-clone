@@ -2,7 +2,7 @@ const canvasWidth = 505;
 const canvasHeight = 606;
 const xMovement = 101;
 const yMovement = 83;
-const moveFactor = 25; // for enemies more accurate position
+const moveFactor = 20; // for enemies more accurate position
 
 // Enemies our player must avoid
 class Enemy {
@@ -17,6 +17,8 @@ class Enemy {
         this.x = x * xMovement;
         this.y = y * yMovement - moveFactor;
         this.speed = speed;
+        this.width = 90;
+        this.height = 70;
     }
 
     // Update the enemy's position, required method for game
@@ -37,6 +39,16 @@ class Enemy {
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
+
+    // check for another object is collide with enemy
+    // uses the bounding box algorithm
+    // found from mdn 2d collision detection https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
+    collides(obj2) {
+        if (this.x < obj2.x + obj2.width &&
+            this.x + this.width > obj2.x &&
+            this.y < obj2.y + obj2.height &&
+            this.y + this.height > obj2.y) return true;
+    }
 }
 
 // Now write your own player class
@@ -46,7 +58,9 @@ class Player {
     constructor () {
         this.sprite = "images/char-boy.png";
         this.x = 2 * xMovement;
-        this.y = 5 * yMovement;
+        this.y = 5 * yMovement - moveFactor;
+        this.width = 60;
+        this.height = 80;
     }
 
     // Update the player position
@@ -72,7 +86,7 @@ class Player {
      * @param  {e} allowedKeys
      */
     handlePlayerMovement(allowedKeys) {
-        if (allowedKeys == 'up' && this.y - yMovement >= 0) {
+        if (allowedKeys == 'up' && this.y - yMovement + moveFactor >= 0) {
             this.y -= yMovement;
         }
         if (allowedKeys == 'left' && this.x - xMovement >= 0) {
@@ -84,6 +98,12 @@ class Player {
         if (allowedKeys == 'down' && this.y + 3 * yMovement <= canvasHeight) {
             this.y += yMovement;
         }
+    }
+
+    // reset the player position
+    reset() {
+        this.x = 2 * xMovement;
+        this.y = 5 * yMovement - moveFactor;
     }
 }
 
@@ -107,6 +127,16 @@ let allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6];
 
 let player = new Player();
 
+/**
+ * collision detection when player collide with enemy
+ */
+function checkCollisions() {
+    allEnemies.forEach((enemy) => {
+        if (enemy.collides(player)) {
+            player.reset();
+        }
+    });
+}
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
