@@ -1,6 +1,14 @@
 body {
     text-align: center;
+    background: #ffffff url('../images/wavy-dots.png');
+    /* Background pattern from Subtle Patterns */
 }
+
+h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+
 #open-modal {
     visibility: hidden;
 }
