@@ -101,6 +101,7 @@ function () {
     value: function handleInput(allowedKeys) {
       // player movement
       this.handlePlayerMovement(allowedKeys);
+      gameWon();
     }
     /**
      * Player movement and handle player cannot move off the screen
@@ -156,8 +157,18 @@ var enemy6 = new Enemy(-2, 3, 5);
 var allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6];
 var player = new Player();
 /**
+ * player won when he reaches the water
+ */
+
+function gameWon() {
+  if (player.y < 0) {
+    player.reset();
+  }
+}
+/**
  * collision detection when player collide with enemy
  */
+
 
 function checkCollisions() {
   allEnemies.forEach(function (enemy) {

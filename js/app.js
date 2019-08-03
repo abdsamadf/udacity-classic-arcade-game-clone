@@ -79,7 +79,9 @@ class Player {
     handleInput(allowedKeys) {
         // player movement
         this.handlePlayerMovement(allowedKeys);
+        gameWon();
     }
+
 
     /**
      * Player movement and handle player cannot move off the screen
@@ -126,6 +128,15 @@ let enemy6 = new Enemy(-2, 3, 5);
 let allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6];
 
 let player = new Player();
+
+/**
+ * player won when he reaches the water
+ */
+function gameWon() {
+    if (player.y < 0) {
+        player.reset();
+    }
+}
 
 /**
  * collision detection when player collide with enemy
