@@ -82,7 +82,6 @@ class Player {
         gameWon();
     }
 
-
     /**
      * Player movement and handle player cannot move off the screen
      * @param  {e} allowedKeys
@@ -115,6 +114,9 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 }
 
+// get the html elements
+const playAgainBtn = document.querySelector('.close-animatedModal.btn-slice');
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
@@ -125,19 +127,40 @@ let enemy4 = new Enemy(3, 3, 1);
 let enemy5 = new Enemy(-3, 3, 3);
 let enemy6 = new Enemy(-2, 3, 5);
 
-let allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6];
+let allEnemies;
+
+function initGame() {
+     allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6];
+};
+
+/**
+ * initialize game
+ */
+initGame();
 
 let player = new Player();
-
 /**
  * player won when he reaches the water
  */
 function gameWon() {
     if (player.y < 0) {
         player.reset();
+        allEnemies = [];
         showModal();
     }
 }
+
+/**
+ * restart the game
+ */
+function restartGame() {
+    initGame();
+}
+
+// click on play again button to play again
+playAgainBtn.addEventListener('click', () => {
+    restartGame();
+});
 
 /**
  * show the modal

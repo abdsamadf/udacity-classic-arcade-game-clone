@@ -143,10 +143,12 @@ function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
-} // Now instantiate your objects.
+} // get the html elements
+
+
+var playAgainBtn = document.querySelector('.close-animatedModal.btn-slice'); // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-
 
 var enemy1 = new Enemy(-1, 1, 1);
 var enemy2 = new Enemy(2, 1, 3);
@@ -154,7 +156,18 @@ var enemy3 = new Enemy(-4, 2, 2);
 var enemy4 = new Enemy(3, 3, 1);
 var enemy5 = new Enemy(-3, 3, 3);
 var enemy6 = new Enemy(-2, 3, 5);
-var allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6];
+var allEnemies;
+
+function initGame() {
+  allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6];
+}
+
+;
+/**
+ * initialize game
+ */
+
+initGame();
 var player = new Player();
 /**
  * player won when he reaches the water
@@ -163,13 +176,26 @@ var player = new Player();
 function gameWon() {
   if (player.y < 0) {
     player.reset();
+    allEnemies = [];
     showModal();
   }
 }
 /**
- * show the modal
+ * restart the game
  */
 
+
+function restartGame() {
+  initGame();
+} // click on play again button to play again
+
+
+playAgainBtn.addEventListener('click', function () {
+  restartGame();
+});
+/**
+ * show the modal
+ */
 
 function showModal() {
   modal.style.display = 'block';
