@@ -2,10 +2,11 @@ const canvasWidth = 505;
 const canvasHeight = 606;
 const xMovement = 101;
 const yMovement = 83;
+const moveFactor = 25; // for enemies more accurate position
 
 // Enemies our player must avoid
 class Enemy {
-    constructor() {
+    constructor(x, y, speed) {
         // Variables applied to each of our instances go here,
         // we've provided one for you to get started
 
@@ -13,9 +14,9 @@ class Enemy {
         // a helper we've provided to easily load images
 
         this.sprite = 'images/enemy-bug.png';
-        this.x = 0;
-        this.y = 0;
-        this.speed = 1;
+        this.x = x * xMovement;
+        this.y = y * yMovement - moveFactor;
+        this.speed = speed;
     }
 
     // Update the enemy's position, required method for game
@@ -24,7 +25,12 @@ class Enemy {
         // You should multiply any movement by the dt parameter
         // which will ensure the game runs at the same speed for
         // all computers.
-
+        if (this.x > canvasWidth) {
+            this.x = getRandomInt(-4, 0) * xMovement;
+            this.y = getRandomInt(1, 4) * yMovement - moveFactor;
+            this.speed = getRandomInt(1, 6);
+        }
+        this.x += this.speed * xMovement * dt;
     }
 
     // Draw the enemy on the screen, required method for game
@@ -62,7 +68,7 @@ class Player {
     }
 
     /**
-     * Player movement and handel player cannot move off the screen
+     * Player movement and handle player cannot move off the screen
      * @param  {e} allowedKeys
      */
     handlePlayerMovement(allowedKeys) {
@@ -81,15 +87,23 @@ class Player {
     }
 }
 
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+}
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-let enemy1 = new Enemy();
-let enemy2 = new Enemy();
-let enemy3 = new Enemy();
-let enemy4 = new Enemy();
-let enemy5 = new Enemy();
-let allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5 ];
+let enemy1 = new Enemy(-1, 1, 1);
+let enemy2 = new Enemy(2, 1, 3);
+let enemy3 = new Enemy(-4, 2, 2);
+let enemy4 = new Enemy(3, 3, 1);
+let enemy5 = new Enemy(-3, 3, 3);
+let enemy6 = new Enemy(-2, 3, 5);
+
+let allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6];
 
 let player = new Player();
 

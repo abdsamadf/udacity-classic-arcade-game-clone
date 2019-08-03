@@ -9,12 +9,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 var canvasWidth = 505;
 var canvasHeight = 606;
 var xMovement = 101;
-var yMovement = 83; // Enemies our player must avoid
+var yMovement = 83;
+var moveFactor = 25; // for enemies more accurate position
+// Enemies our player must avoid
 
 var Enemy =
 /*#__PURE__*/
 function () {
-  function Enemy() {
+  function Enemy(x, y, speed) {
     _classCallCheck(this, Enemy);
 
     // Variables applied to each of our instances go here,
@@ -22,19 +24,27 @@ function () {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
-    this.x = 0;
-    this.y = 0;
-    this.speed = 1;
+    this.x = x * xMovement;
+    this.y = y * yMovement - moveFactor;
+    this.speed = speed;
   } // Update the enemy's position, required method for game
   // Parameter: dt, a time delta between ticks
 
 
   _createClass(Enemy, [{
     key: "update",
-    value: function update(dt) {} // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
-    // Draw the enemy on the screen, required method for game
+    value: function update(dt) {
+      // You should multiply any movement by the dt parameter
+      // which will ensure the game runs at the same speed for
+      // all computers.
+      if (this.x > canvasWidth) {
+        this.x = getRandomInt(-4, 0) * xMovement;
+        this.y = getRandomInt(1, 4) * yMovement - moveFactor;
+        this.speed = getRandomInt(1, 6);
+      }
+
+      this.x += this.speed * xMovement * dt;
+    } // Draw the enemy on the screen, required method for game
 
   }, {
     key: "render",
@@ -81,7 +91,7 @@ function () {
       this.handlePlayerMovement(allowedKeys);
     }
     /**
-     * Player movement and handel player cannot move off the screen
+     * Player movement and handle player cannot move off the screen
      * @param  {e} allowedKeys
      */
 
@@ -107,17 +117,24 @@ function () {
   }]);
 
   return Player;
-}(); // Now instantiate your objects.
+}();
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+} // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
 
-var enemy1 = new Enemy();
-var enemy2 = new Enemy();
-var enemy3 = new Enemy();
-var enemy4 = new Enemy();
-var enemy5 = new Enemy();
-var allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5];
+var enemy1 = new Enemy(-1, 1, 1);
+var enemy2 = new Enemy(2, 1, 3);
+var enemy3 = new Enemy(-4, 2, 2);
+var enemy4 = new Enemy(3, 3, 1);
+var enemy5 = new Enemy(-3, 3, 3);
+var enemy6 = new Enemy(-2, 3, 5);
+var allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6];
 var player = new Player(); // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 
