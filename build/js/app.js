@@ -163,7 +163,20 @@ var player = new Player();
 function gameWon() {
   if (player.y < 0) {
     player.reset();
+    showModal();
   }
+}
+/**
+ * show the modal
+ */
+
+
+function showModal() {
+  modal.style.display = 'block';
+  var $ = window.$;
+  $('#open-modal').animatedModal(); // initialize animatedModal
+
+  $('#open-modal').click(); // triggers opening of Modal.
 }
 /**
  * collision detection when player collide with enemy

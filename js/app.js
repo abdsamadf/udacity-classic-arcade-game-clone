@@ -135,7 +135,18 @@ let player = new Player();
 function gameWon() {
     if (player.y < 0) {
         player.reset();
+        showModal();
     }
+}
+
+/**
+ * show the modal
+ */
+function showModal() {
+    modal.style.display = 'block';
+    const $ = window.$;
+    $('#open-modal').animatedModal(); // initialize animatedModal
+    $('#open-modal').click(); // triggers opening of Modal.
 }
 
 /**
