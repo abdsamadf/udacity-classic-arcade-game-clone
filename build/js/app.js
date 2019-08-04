@@ -233,9 +233,30 @@ function checkCollisions() {
       player.reset();
     }
   });
-} // This listens for key presses and sends the keys to
-// Player.handleInput() method.
+} // When content is loaded then mobiles users to play game by swiping and change character by touch
 
+
+document.addEventListener('DOMContentLoaded', function () {
+  var hammer = new Hammer.Manager(document.body);
+  var swipe = new Hammer.Swipe();
+  hammer.add(swipe);
+  hammer.on('swipeup', function () {
+    player.handleInput('up');
+  });
+  hammer.on('swipeleft', function () {
+    player.handleInput('left');
+  });
+  hammer.on('swiperight', function () {
+    player.handleInput('right');
+  });
+  hammer.on('swipedown', function () {
+    player.handleInput('down');
+  });
+  document.addEventListener('click', function () {
+    player.handleInput('c');
+  });
+}); // This listens for key presses and sends the keys to
+// Player.handleInput() method.
 
 document.addEventListener('keyup', function (e) {
   var allowedKeys = {

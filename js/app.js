@@ -206,6 +206,29 @@ function checkCollisions() {
     });
 }
 
+// When content is loaded then mobiles users to play game by swiping and change character by touch
+document.addEventListener('DOMContentLoaded', () => {
+    let hammer = new Hammer.Manager(document.body);
+    let swipe = new Hammer.Swipe();
+    hammer.add(swipe);
+    hammer.on('swipeup', () => {
+        player.handleInput('up');
+    });
+    hammer.on('swipeleft', () => {
+        player.handleInput('left');
+    });
+    hammer.on('swiperight', () => {
+        player.handleInput('right');
+    });
+    hammer.on('swipedown', () => {
+        player.handleInput('down');
+    });
+
+    document.addEventListener('click', () => {
+        player.handleInput('c');
+    });
+});
+
 // This listens for key presses and sends the keys to
 // Player.handleInput() method.
 document.addEventListener('keyup', e => {
