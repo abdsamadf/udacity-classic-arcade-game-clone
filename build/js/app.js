@@ -11,6 +11,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
  */
 var playerCharacters = ['images/char-boy.png', 'images/char-cat-girl.png', 'images/char-horn-girl.png', 'images/char-pink-girl.png', 'images/char-princess-girl.png'];
 var characterCounter = 0;
+var stopGame = false; // stop the game
+
 var canvasWidth = 505;
 var canvasHeight = 606;
 var xMovement = 101;
@@ -111,6 +113,7 @@ function () {
     key: "handleInput",
     value: function handleInput(allowedKeys) {
       // player movement
+      if (stopGame) return;
       this.handlePlayerMovement(allowedKeys);
       this.handleChangeCharacter(allowedKeys);
       gameWon();
@@ -199,6 +202,7 @@ var player = new Player();
 
 function gameWon() {
   if (player.y < 0) {
+    stopGame = true;
     player.reset();
     allEnemies = [];
     showModal();
@@ -210,6 +214,7 @@ function gameWon() {
 
 
 function restartGame() {
+  stopGame = false;
   initGame();
 } // click on play again button to play again
 

@@ -9,6 +9,7 @@ let playerCharacters = [
     'images/char-princess-girl.png'
 ];
 let characterCounter = 0;
+let stopGame = false; // stop the game
 const canvasWidth = 505;
 const canvasHeight = 606;
 const xMovement = 101;
@@ -94,6 +95,7 @@ class Player {
 
     handleInput(allowedKeys) {
         // player movement
+        if (stopGame) return;
         this.handlePlayerMovement(allowedKeys);
         this.handleChangeCharacter(allowedKeys);
         gameWon();
@@ -175,6 +177,7 @@ let player = new Player();
  */
 function gameWon() {
     if (player.y < 0) {
+        stopGame = true;
         player.reset();
         allEnemies = [];
         showModal();
@@ -185,6 +188,7 @@ function gameWon() {
  * restart the game
  */
 function restartGame() {
+    stopGame = false;
     initGame();
 }
 
