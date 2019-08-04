@@ -1,3 +1,14 @@
+/**
+ * list player characters
+ */
+let playerCharacters = [
+    'images/char-boy.png',
+    'images/char-cat-girl.png',
+    'images/char-horn-girl.png',
+    'images/char-pink-girl.png',
+    'images/char-princess-girl.png'
+];
+let characterCounter = 0;
 const canvasWidth = 505;
 const canvasHeight = 606;
 const xMovement = 101;
@@ -56,7 +67,7 @@ class Enemy {
 // a handleInput() method.
 class Player {
     constructor () {
-        this.sprite = "images/char-boy.png";
+        this.sprite = playerCharacters[0];
         this.x = 2 * xMovement;
         this.y = 5 * yMovement - moveFactor;
         this.width = 60;
@@ -76,10 +87,29 @@ class Player {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
 
+    // change the player character
+    changeCharacter() {
+        this.sprite = playerCharacters[characterCounter % playerCharacters.length];
+    }
+
     handleInput(allowedKeys) {
         // player movement
         this.handlePlayerMovement(allowedKeys);
+        this.handleChangeCharacter(allowedKeys);
         gameWon();
+    }
+
+
+    /**
+     * Handle change player character by pressing 'c' to select different character
+     * @param  {e} allowedKeys
+     */
+    handleChangeCharacter(allowedKeys) {
+        if (allowedKeys == 'c') {
+            characterCounter += 1;
+            this.changeCharacter();
+            this.reset();
+        }
     }
 
     /**
@@ -129,16 +159,17 @@ let enemy6 = new Enemy(-2, 3, 5);
 
 let allEnemies;
 
-function initGame() {
-     allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6];
-};
-
 /**
  * initialize game
  */
+function initGame() {
+     allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6];
+}
+
 initGame();
 
 let player = new Player();
+
 /**
  * player won when he reaches the water
  */
@@ -190,7 +221,8 @@ document.addEventListener('keyup', e => {
         37: 'left',
         38: 'up',
         39: 'right',
-        40: 'down'
+        40: 'down',
+        67: 'c'
     };
 
     player.handleInput(allowedKeys[e.keyCode]);

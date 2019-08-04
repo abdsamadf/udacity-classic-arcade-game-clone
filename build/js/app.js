@@ -6,6 +6,11 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+/**
+ * list player characters
+ */
+var playerCharacters = ['images/char-boy.png', 'images/char-cat-girl.png', 'images/char-horn-girl.png', 'images/char-pink-girl.png', 'images/char-princess-girl.png'];
+var characterCounter = 0;
 var canvasWidth = 505;
 var canvasHeight = 606;
 var xMovement = 101;
@@ -75,7 +80,7 @@ function () {
   function Player() {
     _classCallCheck(this, Player);
 
-    this.sprite = "images/char-boy.png";
+    this.sprite = playerCharacters[0];
     this.x = 2 * xMovement;
     this.y = 5 * yMovement - moveFactor;
     this.width = 60;
@@ -95,13 +100,34 @@ function () {
     key: "render",
     value: function render() {
       ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    } // change the player character
+
+  }, {
+    key: "changeCharacter",
+    value: function changeCharacter() {
+      this.sprite = playerCharacters[characterCounter % playerCharacters.length];
     }
   }, {
     key: "handleInput",
     value: function handleInput(allowedKeys) {
       // player movement
       this.handlePlayerMovement(allowedKeys);
+      this.handleChangeCharacter(allowedKeys);
       gameWon();
+    }
+    /**
+     * Handle change player character by pressing 'c' to select different character
+     * @param  {e} allowedKeys
+     */
+
+  }, {
+    key: "handleChangeCharacter",
+    value: function handleChangeCharacter(allowedKeys) {
+      if (allowedKeys == 'c') {
+        characterCounter += 1;
+        this.changeCharacter();
+        this.reset();
+      }
     }
     /**
      * Player movement and handle player cannot move off the screen
@@ -157,15 +183,13 @@ var enemy4 = new Enemy(3, 3, 1);
 var enemy5 = new Enemy(-3, 3, 3);
 var enemy6 = new Enemy(-2, 3, 5);
 var allEnemies;
+/**
+ * initialize game
+ */
 
 function initGame() {
   allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6];
 }
-
-;
-/**
- * initialize game
- */
 
 initGame();
 var player = new Player();
@@ -224,7 +248,8 @@ document.addEventListener('keyup', function (e) {
     37: 'left',
     38: 'up',
     39: 'right',
-    40: 'down'
+    40: 'down',
+    67: 'c'
   };
   player.handleInput(allowedKeys[e.keyCode]);
 });
