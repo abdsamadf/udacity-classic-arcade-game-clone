@@ -26,10 +26,7 @@ function () {
   function Enemy(x, y, speed) {
     _classCallCheck(this, Enemy);
 
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
+    // The image/sprite for our enemies
     this.sprite = 'images/enemy-bug.png';
     this.x = x * xMovement;
     this.y = y * yMovement - moveFactor;
@@ -43,7 +40,7 @@ function () {
   _createClass(Enemy, [{
     key: "update",
     value: function update(dt) {
-      // You should multiply any movement by the dt parameter
+      // multiply any movement by the dt parameter
       // which will ensure the game runs at the same speed for
       // all computers.
       if (this.x > canvasWidth) {
@@ -71,10 +68,7 @@ function () {
   }]);
 
   return Enemy;
-}(); // Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
-
+}();
 
 var Player =
 /*#__PURE__*/
@@ -82,21 +76,18 @@ function () {
   function Player() {
     _classCallCheck(this, Player);
 
+    // The image/sprite for our player
     this.sprite = playerCharacters[0];
     this.x = 2 * xMovement;
     this.y = 5 * yMovement - moveFactor;
     this.width = 60;
     this.height = 80;
   } // Update the player position
-  // Parameter: dt, a time delta between ticks
 
 
   _createClass(Player, [{
     key: "update",
-    value: function update() {} // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
-    // Draw the player on the screen, required method for game
+    value: function update() {} // Draw the player on the screen, required method for game
 
   }, {
     key: "render",
@@ -112,7 +103,6 @@ function () {
   }, {
     key: "handleInput",
     value: function handleInput(allowedKeys) {
-      // player movement
       if (stopGame) return;
       this.handlePlayerMovement(allowedKeys);
       this.handleChangeCharacter(allowedKeys);
@@ -175,9 +165,8 @@ function getRandomInt(min, max) {
 } // get the html elements
 
 
-var playAgainBtn = document.querySelector('.close-animatedModal.btn-slice'); // Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
+var playAgainBtn = document.querySelector('.close-animatedModal.btn-slice'); // all enemy objects in an array called allEnemies
+// the player object in a variable called player
 
 var enemy1 = new Enemy(-1, 1, 1);
 var enemy2 = new Enemy(2, 1, 3);
@@ -244,8 +233,8 @@ function checkCollisions() {
       player.reset();
     }
   });
-} // This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
+} // This listens for key presses and sends the keys to
+// Player.handleInput() method.
 
 
 document.addEventListener('keyup', function (e) {
