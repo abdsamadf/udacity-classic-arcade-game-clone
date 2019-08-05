@@ -224,7 +224,9 @@ document.addEventListener('DOMContentLoaded', () => {
         player.handleInput('down');
     });
 
-    document.addEventListener('click', () => {
+    let singleTap = new Hammer.Tap({ event: 'singletap' });
+    hammer.add(singleTap);
+    hammer.on('singletap', () => {
         player.handleInput('c');
     });
 });

@@ -252,7 +252,11 @@ document.addEventListener('DOMContentLoaded', function () {
   hammer.on('swipedown', function () {
     player.handleInput('down');
   });
-  document.addEventListener('click', function () {
+  var singleTap = new Hammer.Tap({
+    event: 'singletap'
+  });
+  hammer.add(singleTap);
+  hammer.on('singletap', function () {
     player.handleInput('c');
   });
 }); // This listens for key presses and sends the keys to
