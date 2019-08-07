@@ -15,7 +15,7 @@ The goal of the game is to reaches the water (i.e. top of the game board), the g
   - [Screenshot](#screenshot)
   - [Installation](#installation)
   - [How to Use?](#how-to-use?)
-    - [Mobile phone users](#mobile-phone-users-:iphone:)
+    - [Mobile phone users](#mobile-phone-users:iphone:)
   - [Technology Used](#technology-used)
   - [Contributing](#contributing)
   - [License](#license)
@@ -45,7 +45,7 @@ During the project, I learned complex applications that must be â€œbroken downâ€
 ## How to Use?
 - Use the keyboard arrow keys to move player left, right, up and down
 - Press *C* to change the player character
-### Mobile phone users :iphone:
+### Mobile phone users:iphone:
 - Users swipe on screen to move the player
 - Users touch on screen to change the player character
 
