@@ -1,6 +1,8 @@
 # Udacity FEND Arcade Game Frogger Clone Project :video_game:
 [![ForTheBadge uses-js](https://forthebadge.com/images/badges/uses-JS.svg)](https://forthebadge.com)
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/6b874c80-cf8a-45f9-979a-6a8f505de4c5/deploy-status)](https://app.netlify.com/sites/arcade-game-frogger-clone/deploys)
+
 Arcade Game Frogger Clone is a Single Page App
 
 This project is from my Front-End Web Developer Nanodegree Program at Udacity. This project is based on the classic arcade game [Frogger](https://en.wikipedia.org/wiki/Frogger).
