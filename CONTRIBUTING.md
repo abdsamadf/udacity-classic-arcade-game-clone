@@ -37,6 +37,8 @@ Once you've pushed changes to your local repository, you can issue a pull reques
 
 ### Bug / Feature Request
 
-Ensure the bug was not already reported by searching on GitHub under [issues](). If you're unable to find an open issue addressing the bug, open a [new issue]().
+Ensure the bug was not already reported by searching on GitHub under [issues](https://github.com/abdsamadf/udacity-classic-arcade-game-clone/issues). If you're unable to find an open issue addressing the bug, open a [new issue][new-issue].
 
-If you'd like to request a new function, feel free to do so by opening an issue [here](). Please include sample queries and their corresponding results.
+If you'd like to request a new function, feel free to do so by opening an issue [here][new-issue]. Please include sample queries and their corresponding results.
+
+[new-issue]: https://github.com/abdsamadf/udacity-classic-arcade-game-clone/issues/new
