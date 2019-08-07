@@ -53,4 +53,4 @@ During the project, I learned complex applications that must be â€œbroken downâ€
 * Hammer.js [HAMMER.JS](http://hammerjs.github.io) - A javascript library for multi-touch gestures
 
 ## Contributing
-Contributions are always welcome! Please read the [contribution guidelines]() first.
+Contributions are always welcome! Please read the [contribution guidelines](CONTRIBUTING.md) first.
