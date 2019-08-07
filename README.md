@@ -17,6 +17,7 @@ The goal of the game is to reaches the water (i.e. top of the game board), the g
   - [How to Use?](#How\ to\ Use?)
     - [Mobile phone users](#Mobile\ phone\ users\ :iphone:)
   - [Technology Used](#Technology\ Used)
+  - [Contributing](#Contributing)
 
 ## Get Started
 Click on this link to see the website or you can download or clone the project, and loading up the index.html file in your browser.
@@ -50,3 +51,6 @@ During the project, I learned complex applications that must be â€œbroken downâ€
 * CSS Animation [animate.css](https://daneden.github.io/animate.css) - A cross-browser library of CSS animations.
 * Animated Modal [animatedModal.js](https://joaopereirawd.github.io/animatedModal.js) - animatedModal.js is a jQuery plugin to create a fullscreen modal with CSS3 transitions.
 * Hammer.js [HAMMER.JS](http://hammerjs.github.io) - A javascript library for multi-touch gestures
+
+## Contributing
+Contributions are always welcome! Please read the [contribution guidelines]() first.
