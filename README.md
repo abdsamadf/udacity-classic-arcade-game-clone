@@ -9,15 +9,16 @@ The goal of the game is to reaches the water (i.e. top of the game board), the g
 
 ## Table of Contents
 
-  - [Get Started](#Get\ Started)
-  - [Motivation](#Motivation)
-  - [Lesson Learned](#What\ I\ learned\ from\ this\ project)
-  - [Screenshot](#Screenshot)
-  - [Installation](#Installation)
-  - [How to Use?](#How\ to\ Use?)
-    - [Mobile phone users](#Mobile\ phone\ users\ :iphone:)
-  - [Technology Used](#Technology\ Used)
-  - [Contributing](#Contributing)
+  - [Get Started](#get-started)
+  - [Motivation](#motivation)
+  - [Lesson Learned](#what-i-learned-from-this-project)
+  - [Screenshot](#screenshot)
+  - [Installation](#installation)
+  - [How to Use?](#how-to-use?)
+    - [Mobile phone users](#mobile-phone-users-:iphone:)
+  - [Technology Used](#technology-used)
+  - [Contributing](#contributing)
+  - [License](#license)
 
 ## Get Started
 Click on this [link]() to see the website or you can download or clone the project, and loading up the index.html file in your browser.
@@ -33,6 +34,9 @@ During the project, I learned complex applications that must be â€œbroken downâ€
 
 ## Installation
 - You can download the zip or clone the project with git
+  ```sh
+  $ git clone https://github.com/abdsamadf/udacity-classic-arcade-game-clone.git
+  ```
 - Install [Node.js](https://nodejs.org/) by following the instructions on the website.
 - Run `npm install` inside the project
 - Run `npm start` afterwards
@@ -56,3 +60,8 @@ During the project, I learned complex applications that must be â€œbroken downâ€
 Contributions are always welcome! Please read the [contribution guidelines](CONTRIBUTING.md) first.
 
 Please note that this project is released with a [Contributor Code of Conduct](code-of-conduct.md). By participating in this project you agree to abide by its terms.
+
+## LICENSE
+[![MIT license](https://img.shields.io/github/license/abdsamadf/udacity-classic-arcade-game-clone)](http://opensource.org/licenses/MIT)
+
+[MIT](https://github.com/abdsamadf/udacity-classic-arcade-game-clone/blob/master/LICENSE) Â© Abdul Samad
