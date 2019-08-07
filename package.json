@@ -1,12 +1,11 @@
 {
   "name": "classic-arcade-game",
   "version": "1.0.0",
-  "description": "## Table of Contents",
+  "description": "Arcade Game Frogger Clone is a Single Page App",
   "main": "index.js",
   "scripts": {
   "build": "babel js/app.js -d build/js/",
-  "watch": "babel js/app.js -w -d build/js/",
-  "test": "echo \"Error: no test specified\" && exit 1"
+  "watch": "babel js/app.js -w -d build/js/"
   },
   "repository": {
     "type": "git",
