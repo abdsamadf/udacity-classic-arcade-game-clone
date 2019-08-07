@@ -20,7 +20,7 @@ The goal of the game is to reaches the water (i.e. top of the game board), the g
   - [Contributing](#Contributing)
 
 ## Get Started
-Click on this link to see the website or you can download or clone the project, and loading up the index.html file in your browser.
+Click on this [link]() to see the website or you can download or clone the project, and loading up the index.html file in your browser.
 
 ##  Motivation
 Games have a lot of objects and those objects do a lot of different things; but sometimes they do some very similar things as well. This creates a great opportunity for me to practice object-oriented programming, an important programming paradigm that influences application architecture and provides performance optimization.
