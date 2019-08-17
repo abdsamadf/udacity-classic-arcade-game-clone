@@ -41,7 +41,8 @@ During the project, I learned complex applications that must be â€œbroken downâ€
   ```
 - Install [Node.js](https://nodejs.org/) by following the instructions on the website.
 - Run `npm install` inside the project
-- Run `npm start` afterwards
+- Run `npm run build` to build javascript
+- Run `npm run watch` afterwards
 - Good Luck! :thumbsup:
 
 ## How to Use?
