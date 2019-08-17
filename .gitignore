@@ -124,8 +124,7 @@ typings/
 coverage
 dist
 /.package.json
-package-lock.json
-!/.github/actions/*/package-lock.json
+!/.github/actions/*/
 
 /packages/babel-runtime/helpers/*.js
 !/packages/babel-runtime/helpers/toArray.js
