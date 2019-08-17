@@ -1,26 +1,40 @@
 {
-  "name": "classic-arcade-game",
+  "name": "udacity-classic-arcade-game-clone",
   "version": "1.0.0",
   "description": "Arcade Game Frogger Clone is a Single Page App",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
   "build": "babel js/app.js -d build/js/",
   "watch": "babel js/app.js -w -d build/js/"
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/abdsamadf/udacity-classic-arcade-game-clone.git"
   },
-  "author": "Samad",
+  "author": "Abdul Samad <abdulsamadf97@gmail.com> (https://github.com/abdsamadf)",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abdsamadf/udacity-classic-arcade-game-clone/issues"
+  },
+  "readmeFilename": "README.markdown",
+  "homepage": "https://arcade-game-frogger-clone.netlify.com",
   "devDependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/polyfill": "^7.4.4"
   },
-  "bugs": {
-    "url": ""
-  },
-  "homepage": ""
+  "keywords": [
+    "Udacity",
+    "FEND",
+    "JavaScript",
+    "project",
+    "Classic",
+    "Arcade",
+    "Game",
+    "Clone",
+    "CSS Animation",
+    "Animated Modal",
+    "Hammer.js"
+  ]
 }
